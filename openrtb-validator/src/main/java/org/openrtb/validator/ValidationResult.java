@@ -32,26 +32,28 @@
 
 package org.openrtb.validator;
 
+import com.github.fge.jsonschema.core.report.ProcessingReport;
+
 /**
  * This class provides validation result data.
  */
 public class ValidationResult {
 
     private final boolean valid;
-    
-    private final String result;
+
+    private final ProcessingReport result;
 
     /**
      * Constructs an object containing JSON validation result data.
      * 
      * @param valid
      *            validity status from validation
-     * @param result
+     * @param report
      *            the result data from validation
      */
-    ValidationResult(boolean valid, String result) {
+    ValidationResult(boolean valid, ProcessingReport report) {
         this.valid = valid;
-        this.result = result;
+        this.result = report;
     }
 
     /**
@@ -68,15 +70,17 @@ public class ValidationResult {
      * 
      * @return the result data from validation
      */
-    public String getResult() {
+    public ProcessingReport getReport() {
         return result;
     }
+
+    public String getResult() { return result.toString(); }
 
     @Override
     public String toString() {
         return (new StringBuilder())
                 .append("valid=").append(valid)
-                .append("result=").append(result)
+                .append("result=").append(result.toString())
                 .toString();
     }
     

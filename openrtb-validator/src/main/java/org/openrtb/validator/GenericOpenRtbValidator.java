@@ -129,7 +129,7 @@ public class GenericOpenRtbValidator implements OpenRtbValidator {
 	    try {
             ProcessingReport processingReport = schema.validate(jsonNode);
             if (processingReport != null) {
-                return new ValidationResult(processingReport.isSuccess(), processingReport.toString());
+                return new ValidationResult(processingReport.isSuccess(), processingReport);
             } else {
                 return new ValidationResult(false, null);
             }
